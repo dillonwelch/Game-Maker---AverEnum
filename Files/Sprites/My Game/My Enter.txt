@@ -1,0 +1,24 @@
+if(visible == 1)
+{
+    if(pos >= string_length(drawstr))
+    {
+        if(text[1] != "")
+        {
+            for(i = 0; i < textSize; i += 1)
+            {
+                text[i] = text[i + 1];
+                show_message("Text " + string(i) + " is: " + text[i]);
+            }
+            text[i] = "";
+        }
+        else
+        {
+            text[0] = 0;
+        }
+        pos = 0;
+    }
+    else
+    {
+        pos = string_length(drawstr);
+    }
+}

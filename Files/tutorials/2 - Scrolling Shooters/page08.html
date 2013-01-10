@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<head>
+    <title>Game Maker Tutorial</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr style="background-color: #3a7c3f">
+	  <td style="height: 22px"><img src="bar.png"></td>
+	</tr>
+	<tr style="background-color: #ffffff">
+	<td style="width: 220px" valign="top">
+	
+	<div class="bodyText"><i>Page 8 of 13</i></div>
+	<div class="header">Enemies and Weaponry</div></div>
+	
+	<div class="bodyText">
+
+
+We need to define two important collision events for the enemy plane: the collision event with the bullet, which should destroy the enemy plane, and the collision event with the main plane which should destroy the main plane and end the game.
+<br /><br />
+We start with the collision event with the bullet. A number of actions are required here. But first of all we need a sound for a small explosion and a sprite that indicates the explosion. To create a sound, press <b>Add sound</b> and load some nice explosion sound (see the Sounds folder in Game Maker's directory for some example sounds). For the explosion we need a little sprite. Like for the enemy plane we set the origin to (16,16). We also create an explosion object and give it the explosion sprite. It does nothing except that once the complete explosion animation has played it must destroy itself. There is an event called <b>Animation end</b> for this under the other events.
+<br /><br />
+When the sound and the explosion object are ready we can fill in the collision event for the enemy plane with the bullet. The following actions are required. First of all we play the explosion sound. Next we destroy the bullet. For this use the action to destroy an instance but, at the top, indicate that it should apply to the <b>Other</b> instance, which is the bullet in this case.
+<br /><br />
+Next we create the explosion object, relative at position (0,0), that is, at the same place as the enemy plane. We do not destroy the enemy plane! Instead we move it to a random position above the room such that it looks as if a new enemy plane is coming. Finally, we set the score relative to 5. We need relative here because we want to add 5 points to the score; we do not want to set the score to 5. The evnt should look like this:
+</div>
+
+<center><img src="enemy1bullet.png"></center>
+<br />
+
+<div class="bodyText">
+Next we need to handle the collision with the main plane. Again we will need an explosion sprite (a bit bigger this time) and an exploding sound (a bit louder this time). We add the sound to the game and we make a sprite for the explosion. Again we create an explosion object for it, but this object is a bit more elaborate than the other explosion object because it will also handle the ending of the game.
+<br /><br />
+In its <b>Animation end</b> event we do a few things. We first destroy the instance to make it invisible. Next we sleep a while to make sure that the exploding sound is finished. The next action shows the high-score list, such that the player can type his or her name when reaching a high score. This goes all automatic in Game Maker. You can though indicate what the appearance should be of the high-score table. You can have a nice background image, choose the font, etc. You should experiment a bit with this. Finally we restart the game.
+</div>
+
+<center><img src="explosionend.png"></center>
+<br />
+
+<div class="bodyText">
+In the collision event of the enemy plane and the main plane, we change the main plane, that is, the other instance, into an explosion. Also we play the exploding sound and we destroy the enemy plane. 
+What remains is to place an enemy plane in the room but we will do this slightly different. A good game becomes more difficult all the time. So we like to start with just one enemy plane and get more of them over time. To this end we create one more object, which we will call <b>controller_enemy</b>. It will control the creation of enemy planes. We make the object invisible during the game by unchecking the box labeled <b>Visible</b>. A sprite is not required for it.
+<br /><br />
+In its creation event we create an enemy place at a random location just above the room. This will be the first enemy. We also set the alarm clock to 200. In the event for this alarm clock we create another enemy plane and set the alarm clock again, but this time to 500. That is all. The effect is that at the beginning of the game there is one enemy plane.
+<br /><br />
+After 200 steps, that is, about seven seconds, a second enemy plane appears. After about 15 seconds, a third plane appears, etc. (The reason that we let the second plane appears faster than the other ones is because the game with just one enemy plane is too boring.) Place one instance of the controller object in the room and we are done.
+<br /><br />
+This finishes the second version of <i>1945</i>. We have a playable game with an enemy.
+
+	</div>
+
+	
+	</td>
+	</tr>
+</table>
+</body>
+</html>

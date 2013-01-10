@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<head>
+    <title>Game Maker Tutorial</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr style="background-color: #3a7c3f">
+	  <td style="height: 22px"><img src="bar.png"></td>
+	</tr>
+	<tr style="background-color: #ffffff">
+	<td style="width: 220px" valign="top">
+	
+	<div class="bodyText"><i>Page 9 of 13</i></div>
+	<div class="header">Scores, Lives and Health</div></div>
+	
+	<div class="bodyText">
+
+
+It is a bit unsatisfactory that the game ends whenever you are hit. To make the game a bit more interesting we will let enemies create damage. Only when the plane gets too much damage will it be destroyed. Also we will introduce multiple lives and create a nice information panel that shows this information, together with the score. Fortunately, this will all be very easy because Game Maker has built-in mechanisms to deal with score, lives, and health (being the opposite of damage).
+<br /><br />
+To create all this we make a new object called the <b>controller_life</b>. It does not need a sprite as we will control the drawing itself using the drawing event. As you know, normally in each step the sprite that is set for the instance is drawn at the correct location in the room. But when you put actions in the drawing event this is no longer the case. Now these actions determine what is being drawn.
+<br /><br />
+There is a whole collection of actions available just for drawing. Most of them can be found in the <b>Draw</b> tab. But you can also use other actions here. The drawing actions only make sense in the drawing event. At other places they are basically ignored.
+<br /><br />
+As a start we create one big sprite that functions as information panel. Drag the following image into Game Maker and save it as a sprite:
+</div>
+
+<center><img src="bottom.png"></center>
+<br />
+
+<div class="bodyText">
+It will show the score, the damage (in the black area at the left), and the number of planes left, that is the number of lives. In the drawing event of <b>controller_life</b> we draw this information panel sprite at the correct position using the action to draw a sprite. We fill the parameters in as follows:
+</div>
+
+<center><img src="drawhud.png"></center>
+<br />
+
+<div class="bodyText">
+This will place the correct sprite at the bottom of the screen. (Using –1 for the subimage means that the current subimage is drawn. As there is just one subimage in the sprite we don't really care about this, but if a sprite consists of multiple subimages you can indicate here the subimage you want to see.) To make sure that the bottom panel lies above everything else we give the <b>controller_life</b> object a depth of –10000.
+<br /><br />
+In its creation event, the <b>controller_life</b> object sets the score to 0, the number of lives to 3, and the health to 100. There are actions for this in the <b>Score</b> tab. To draw the score we use the appropriate action in the <b>Score</b> tab. (We first set drawing color to be yellow.) In the action to draw the score, we fill in the parameters as follows (no caption because the caption is already on the background): 
+</div>
+
+<center><img src="drawscore.png"></center>
+<br />
+
+<div class="bodyText">
+For drawing the lives we use a different mechanism. Rather than just drawing the number we will draw a number of little images of the plane. For this we will use a small sprite depicting the plane. There is an action for this in the <b>Score</b> tab. 
+</div>
+
+<center><img src="drawlives.png"></center>
+<br />
+
+<div class="bodyText">
+As we do now show the score and number of lives ourselves we no longer want them displayed in the window caption. There is an action in the <b>Score</b> tab to indicate what must be shown in the window caption. Put this in the creation event of the object and indicate that nothing should be shown. 
+Also for drawing the health there is a special action. The health is displayed in the form of a health bar. You can indicate the position, size, and color scheme used. We fill in the parameters as follows:
+</div>
+
+<center><img src="drawhealth.png"></center>
+<br />
+
+<div class="bodyText">
+The total drawing event looks something like this:  
+</div>
+
+<center><img src="controllerdraw.png"></center>
+<br />
+
+<div class="bodyText">
+But we still need to actually check for the health and lives. First of all we have to make some changes in the collision event of the enemy plane and the main plane. It should no longer destroy the main plane, but only destroy itself (turning it into an explosion) and decrease the health, that is, set the health relative to -30 (so it can withstand 3 hits).
+<br /><br />
+The <b>controller_life</b> object will check when the health becomes smaller than 0. There is an event for this under the other events. In this event we blow up the main plane by turning it into a big explosion. We also reset the health and play the correct sound. So the event looks like this:
+</div>
+
+<center><img src="controllernohealth.png"></center>
+<br />
+
+<div class="bodyText">
+The big explosion object, in its <b>Animation End</b> event destroys itself. Sleeps for a while, to let the sound finish, creates a new main plane at the current position (that is, relative at position (0,0)) and reduces the number of lives, that is, set it relative to –1.
+<br /><br />
+Finally, we need to check whether we did run out of lives. Fortunately, there is again an event for this. For the <b>controller_life</b> object, in this event we show the high-score list and restart the game. This finished the third version of the game. You can now play it and it already looks pretty good. But the game soon becomes boring. So we have to enhance it a bit more and add some variation.
+
+	</div>
+
+	
+	</td>
+	</tr>
+</table>
+</body>
+</html>

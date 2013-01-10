@@ -1,0 +1,1 @@
+BLADES OF EXILE SOURCE VERSION HISTORY* Release 1:	- Initial Release.	* Release 2:	- Added a bunch of missing files to the Windows version.* Release 3:	- Added a couple more missing files to the Windows editor.	- Changed the license to the GPL, verison 2.	

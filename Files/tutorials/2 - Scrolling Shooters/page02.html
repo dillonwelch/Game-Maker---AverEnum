@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<head>
+    <title>Game Maker Tutorial</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr style="background-color: #3a7c3f">
+	  <td style="height: 22px"><img src="bar.png"></td>
+	</tr>
+	<tr style="background-color: #ffffff">
+	<td style="width: 220px" valign="top">
+	
+	<div class="bodyText"><i>Page 2 of 13</i></div>
+	<div class="header">Variables</div></div>
+	
+	<div class="bodyText">
+	Before we will actually create the scrolling shooter game we need to delve a bit into an important concept of Game Maker: the use of variables. This simple concept will provide a very powerful mechanism to enable much more interesting game play. So what is a variable? It can best be seen as a property of an instance of an object.<br /><br />As you should know, there are certain properties we can indicate when we define an object. For example we can set whether it is visible or whether it is solid. There are also a number of actions that change certain properties. For example there is an action to change the position or the speed of the instance.<br /><br />Each instance has a number of such properties and there are also a number of global properties, like the score, that are not related to individual instances. All properties are stored in so-called variables that have a name. Here are some of the properties/variables that each instance has:<br />
+
+<br /><b>x</b>: the x coordinate of the instance
+<br /><b>y</b>: the y coordinate of the instance
+<br /><b>hspeed</b>: horizontal speed (in pixels per step)
+<br /><b>vspeed</b>: vertical speed (in pixels per step)
+<br /><b>direction</b>: current direction of motion in degrees, 0 being right, and going anticlockwise to 360 being right again
+<br /><b>speed</b>: the current speed in this direction
+<br /><b>visible</b>: whether the object is visible (1, or true) or invisible (0, or false)
+<br /><b>solid</b>: whether the object is solid (1, or true) or not (0, or false)
+	</div>
+		
+	<div class="bodyText">
+	And here are some global variables:<br />
+<br /><b>score</b>: the current value of the score
+<br /><b>lives</b>: the current number of lives
+<br /><b>health</b>: the current health of the player (defaults to 100)
+<br /><b>mouse_x</b>: the x coordinate of the mouse
+<br /><b>mouse_y</b>: the y coordinate of the mouse
+<br /><b>room_speed</b>: current speed (FPS) of the room in steps per second
+<br /><b>room_caption</b>: caption shown in the window title
+<br /><b>room_width</b>: width of the room in pixels
+<br /><b>room_height</b>: height of the room in pixels
+
+<br /><br />
+
+There are many, many more variables, both local for the instances, and global. All of them can be found in the <i>Game Maker</i> documentation. There are actions which manipulate the value of certain variables but, as we will see, you can also manipulate them directly. What is better, you can define your own variables and use these as well.
+<br /><br />
+For example, as we will see below, we want our spaceship to be able to shoot only once every five steps in the game. So our space ship needs a property to indicate whether it can shoot. We use a variable for this property that we call <b>can_shoot</b>. (A variable name can only consist of letters and the underscore symbol. Variable name are case-sensitive, so <b>Can_Shoot</b> is not the same variable as <b>can_shoot</b>.) In the creation event of the spaceship we set this variable to 1 (we always use 1 to indicate true). When the player wants to fire a shot we check the value of the variable to see whether this is allowed. Whenever a shot is fired we set the property to 0 (indicating that shooting is temporarily not allowed).
+<br /><br />
+Next we use an alarm event to set the property back to 1 after five steps. Below we will describe this in more detail. In a similar way we can use variables to indicate whether the spaceship has an active shield, whether it has some special weapon upgrade, etc.
+
+
+
+
+	</div>
+
+	
+	</td>
+	</tr>
+</table>
+</body>
+</html>
